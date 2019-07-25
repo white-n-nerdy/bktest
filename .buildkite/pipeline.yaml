@@ -1,3 +1,6 @@
 steps:
-  - command: scripts/trigger-github-deploy.ps1
+  - label: testing
+    command: scripts/trigger-github-deploy.ps1
     id: trigger-github-deploy
+    agents:
+      queue: "ssrs-lower-windows"
