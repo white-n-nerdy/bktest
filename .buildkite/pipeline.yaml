@@ -1,11 +1,16 @@
 steps:
-  - block: "Request Release"
+  - block: "Request Inputs"
     fields:
       - text: "Version"
-        key: "version"
+        key: "release-version"
         hint: "release version"
         required: false
         default: "1.3"
+      - text: "Hostname (optional)"
+        key: "hostname"
+        hint: "Optional, enter hostname to deploy to a single instance"
+        required: false
+        default: ""
   - label: "command"
     branches: "master"
     agents:
