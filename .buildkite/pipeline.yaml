@@ -1,7 +1,18 @@
 steps:
-  - label: "testing"
-    branches: "master"
-    agents:
-      queue: "ssrs-lower-windows"
-    command:
-      - "powershell.exe -File scripts\\trigger-github-deploy.ps1"
+  - block: "Deploy"
+    prompt: "Fill out the details for "Fill out the details for deployment"
+    fields:
+      - select: "Environment"
+        key: "environment"
+        default: "dev"
+        options:
+        - label: "dev"
+          value: "dev"
+        - label: "qa"
+          value: "qa"
+#  - label: "testing"
+#    branches: "master"
+#    agents:
+#      queue: "ssrs-lower-windows"
+#    command:
+#      - "powershell.exe -File scripts\\trigger-github-deploy.ps1"
