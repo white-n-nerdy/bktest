@@ -23,4 +23,4 @@ steps:
     agents:
       queue: "ssrs-lower-windows"
     command:
-      - "powershell.exe -File scripts\\\\${environment}\\trigger-github-deploy.ps1"
+      - "powershell.exe -File scripts\\%environment%\\trigger-github-deploy.ps1"
