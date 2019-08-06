@@ -6,9 +6,9 @@ steps:
         hint: "release version"
         required: false
         default: "1.3"
-#  - label: "testing"
-#    branches: "master"
-#    agents:
-#      queue: "ssrs-lower-windows"
-#    command:
-#      - "powershell.exe -File scripts\\trigger-github-deploy.ps1"
+  - label: "command"
+    branches: "master"
+    agents:
+      queue: "ssrs-lower-windows"
+    command:
+      - "powershell.exe -File scripts\\trigger-github-deploy.ps1"
