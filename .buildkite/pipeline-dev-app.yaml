@@ -7,7 +7,7 @@ steps:
       - text: "Version"
         key: "release-version"
         hint: "release version"
-        required: false
+        required: true
       - text: "Hostname (optional)"
         key: "hostname"
         hint: "Optional, enter hostname to deploy to a single instance"
