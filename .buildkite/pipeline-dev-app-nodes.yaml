@@ -1,0 +1,29 @@
+env:
+  ENVIRONMENT: dev
+  TIER: app
+steps:
+  - block: "Request Inputs"
+    fields:
+      - text: "Version"
+        key: "release-version"
+        hint: "release version"
+        required: true
+      - text: "Hostname"
+        key: "hostname"
+        hint: "Optional, enter hostname to deploy to a single instance"
+        required: true
+  - label: "Begin setup"
+    branches: "master"
+    agents:
+      queue: "ssrs-lower-windows"
+    command:
+      - "powershell.exe -File scripts\\%ENVIRONMENT%\\%TIER%\\trigger-github-deploy.ps1"
+  - wait
+  - block: ':windows: Add node to cluster before proceeding'
+    branches: 'master'
+  - label: "Finish setup"
+    branches: "master"
+    agents:
+      queue: "ssrs-lower-windows"
+    command:
+      - "powershell.exe -File scripts\\%ENVIRONMENT%\\%TIER%\\trigger-github-deploy.ps1"
