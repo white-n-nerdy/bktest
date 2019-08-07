@@ -1,6 +1,16 @@
+env:
+  ENVIRONMENT: dev
+  TIER: app
 steps:
   - block: "Request Inputs"
     fields:
+      - select: "Environment"
+        key: "environment"
+        options:
+        - label: "Dev"
+          value: "dev"
+        - label: "QA"
+          value: "qa"
       - text: "Version"
         key: "release-version"
         hint: "release version"
@@ -11,13 +21,6 @@ steps:
         hint: "Optional, enter hostname to deploy to a single instance"
         required: false
         default: ""
-      - select: "Environment"
-        key: "environment"
-        options:
-        - label: "Dev"
-          value: "dev"
-        - label: "QA"
-          value: "qa"
   - label: "command"
     branches: "master"
     agents:
